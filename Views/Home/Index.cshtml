@@ -1,0 +1,56 @@
+﻿<div id="carouselBlk">
+	<div id="myCarousel" class="carousel slide">
+		<div class="carousel-inner">
+			<div class="item active">
+				<div class="container">
+					<a href="/Account/Register"><img style="width:100%" src="~/Content/images/pic1.jpg" alt="special offers" /></a>
+					<div class="carousel-caption">
+						<h4>Second Thumbnail label</h4>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="container">
+					<a href="/Account/Register"><img style="width:100%" src="~/Content/images/pic2.jpg" alt="" /></a>
+					<div class="carousel-caption">
+						<h4>Second Thumbnail label</h4>
+						<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+	</div>
+</div>
+<li>@{Html.RenderAction("CategoryMenu", "Store");}</li>
+
+
+<h3>Top 10 Items In Our Store</h3>
+<ul id="item-list">
+	@foreach (var item in Model)
+	{
+
+		<li>
+			<a href="@Url.Action("Details","Store",new { id = item.ItemId })" style="color:#ffe6f3">
+				<img alt="@item.Title" src="@item.ItemArtUrl" style="width:25%;"/>
+				<br />
+
+				<span style="color:#ffe6f3">@item.Title</span>
+			</a>
+
+			@String.Format("{0:F}", item.Price)$
+			<p class="button1" style="color:#ffe6f3 !important;">
+
+				@Html.ActionLink("Add to cart", "AddToCart",
+		"ShoppingCart", new { id = item.ItemId }, "")
+			</p>
+		</li>
+
+
+
+	}
+
+
+</ul>

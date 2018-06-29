@@ -1,0 +1,10 @@
+﻿@model IEnumerable<shoppingstore.Models.Category>
+
+@{
+	ViewBag.Title = "Store";
+}
+
+<h2>Browse Category</h2>
+
+
+<li>@{Html.RenderAction("CategoryMenu", "Store");}</li>
